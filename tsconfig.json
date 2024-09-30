@@ -1,0 +1,25 @@
+{
+	// TODO https://bun.sh/docs/typescript#suggested-compileroptions
+	"compilerOptions": {
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		// Types aren't inherited so need to redeclare in each package that uses bun types
+		"types": ["bun-types"],
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"jsx": "react-jsx",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"resolveJsonModule": true,
+		"target": "ES2022",
+		"strict": true,
+		"allowJs": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+
+		// Vite takes care of building everything, not tsc.
+		"noEmit": true,
+
+		// For octokit types https://www.npmjs.com/package/@octokit/webhooks-types
+		"strictNullChecks": true
+	}
+}

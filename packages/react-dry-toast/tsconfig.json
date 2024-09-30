@@ -1,0 +1,13 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"types": ["bun-types"],
+		"outDir": "build",
+		"noEmit": false,
+		"declaration": true,
+		"declarationMap": true
+	},
+	// Things not to transpile
+	// "exclude": ["build/*"],
+	"include": ["src/*"]
+}

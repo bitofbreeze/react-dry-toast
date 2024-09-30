@@ -1,0 +1,65 @@
+diff --git a/node_modules/patch-package/dist/index.js b/node_modules/patch-package/dist/index.js
+index 5642bbd..0ac8e05 100755
+--- a/node_modules/patch-package/dist/index.js
++++ b/node_modules/patch-package/dist/index.js
+@@ -88,10 +88,16 @@ else {
+         const reverse = !!argv["reverse"];
+         // don't want to exit(1) on postinstall locally.
+         // see https://github.com/ds300/patch-package/issues/86
+-        const shouldExitWithError = !!argv["error-on-fail"] ||
+-            (process_1.default.env.NODE_ENV === "production" && ci_info_1.isCI) ||
+-            (ci_info_1.isCI && !process_1.default.env.PATCH_PACKAGE_INTEGRATION_TEST) ||
+-            process_1.default.env.NODE_ENV === "test";
++
++        let shouldExitWithError = !!argv["error-on-fail"] ||
++        (process_1.default.env.NODE_ENV === "production" && ci_info_1.isCI) ||
++        (ci_info_1.isCI && !process_1.default.env.PATCH_PACKAGE_INTEGRATION_TEST) ||
++        process_1.default.env.NODE_ENV === "test";
++        // Don't error when flag is false but this doesn't work because can't specify order of patches and it's not good to not error for errors other than a missing package
++        if (!argv["error-on-fail"]) {
++            // shouldExitWithError = false;
++        }
++
+         const shouldExitWithWarning = !!argv["error-on-warn"];
+         applyPatches_1.applyPatchesForApp({
+             appPath,
+diff --git a/node_modules/patch-package/dist/makePatch.js b/node_modules/patch-package/dist/makePatch.js
+index d8d0925..874284a 100644
+--- a/node_modules/patch-package/dist/makePatch.js
++++ b/node_modules/patch-package/dist/makePatch.js
+@@ -120,7 +120,7 @@ function makePatch({ packagePathSpecifier, appPath, packageManager, includePaths
+             try {
+                 // try first without ignoring scripts in case they are required
+                 // this works in 99.99% of cases
+-                spawnSafe_1.spawnSafeSync(`yarn`, ["install", "--ignore-engines"], {
++                spawnSafe_1.spawnSafeSync(`bun`, ["install"], {
+                     cwd: tmpRepoNpmRoot,
+                     logStdErrOnError: false,
+                 });
+@@ -128,7 +128,7 @@ function makePatch({ packagePathSpecifier, appPath, packageManager, includePaths
+             catch (e) {
+                 // try again while ignoring scripts in case the script depends on
+                 // an implicit context which we haven't reproduced
+-                spawnSafe_1.spawnSafeSync(`yarn`, ["install", "--ignore-engines", "--ignore-scripts"], {
++                spawnSafe_1.spawnSafeSync(`bun`, ["install", "--ignore-scripts"], {
+                     cwd: tmpRepoNpmRoot,
+                 });
+             }
+diff --git a/node_modules/patch-package/dist/stateFile.js b/node_modules/patch-package/dist/stateFile.js
+index 638a755..a4a8a5b 100644
+--- a/node_modules/patch-package/dist/stateFile.js
++++ b/node_modules/patch-package/dist/stateFile.js
+@@ -37,7 +37,12 @@ function savePatchApplicationState({ packageDetails, patches, isRebasing, }) {
+         version,
+         isRebasing,
+     };
+-    fs_1.writeFileSync(fileName, json_stable_stringify_1.default(state, { space: 4 }), "utf8");
++    try {
++        fs_1.writeFileSync(fileName, json_stable_stringify_1.default(state, { space: 4 }), "utf8"); 
++    } catch (e) {
++        console.log(e);
++    }
++    
+ }
+ exports.savePatchApplicationState = savePatchApplicationState;
+ function clearPatchApplicationState(packageDetails) {

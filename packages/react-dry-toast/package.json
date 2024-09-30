@@ -1,0 +1,53 @@
+{
+	"name": "react-dry-toast",
+	"//version": "Not used https://semantic-release.gitbook.io/semantic-release/support/faq#why-is-the-package.jsons-version-not-updated-in-my-repository but is modified on npm version of package.json",
+	"version": "0.0.0",
+	"description": "Headless toast notifications for React",
+	"keywords": ["toast", "react", "typescript", "headless"],
+	"homepage": "https://github.com/bitofbreeze/react-dry-toast",
+	"bugs": {
+		"url": "https://github.com/bitofbreeze/react-dry-toast"
+	},
+	"repository": {
+		"type": "git",
+		"//url": "Semantic Release uses this to get the code, and mirror might not be updated since separate action + needs token while private, but also this might be where tags are published and we do want it in mirrored one",
+		"url": "git+https://github.com/bitofbreeze/react-dry-toast.git"
+	},
+	"license": "MIT",
+	"//files": "Publish src too for bun imports. Need to reference README where it is in destination repo.",
+	"files": ["build", "src", ".github/README.md"],
+	"type": "module",
+	"main": "build/toast.js",
+	"exports": {
+		".": {
+			"//": "./For importing directly in monorepo",
+			"bun": "./src/toast.tsx",
+			"default": "./build/toast.js"
+		}
+	},
+	"scripts": {
+		"build": "tsc",
+		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
+	},
+	"peerDependencies": {
+		"react": "^18.0.0"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "0.16.2",
+		"@testing-library/react": "16.0.1",
+		"@types/react": "18.3.5",
+		"semantic-release": "24.1.1",
+		"typescript": "5.6.2"
+	},
+	"dependencies": {},
+	"release": {
+		"branches": ["main"],
+		"plugins": [
+			"@semantic-release/commit-analyzer",
+			"@semantic-release/release-notes-generator",
+			"@semantic-release/npm",
+			"@semantic-release/github"
+		],
+		"dryRun": true
+	}
+}

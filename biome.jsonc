@@ -1,0 +1,48 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"ignore": ["./apps/og-image/worker-configuration.d.ts"],
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"useButtonType": "off",
+				"noInteractiveElementToNoninteractiveRole": "warn"
+			},
+			"style": {
+				"noNonNullAssertion": "warn",
+				"noParameterAssign": "warn"
+			},
+			"suspicious": {
+				"noExplicitAny": "warn",
+				"noArrayIndexKey": "warn",
+				"noConfusingLabels": "warn",
+				"noEmptyBlock": "warn"
+			},
+			"nursery": {
+				// https://github.com/biomejs/biome/issues/1274
+				// "useSortedClasses":"error"
+			}
+		}
+	},
+	"formatter": {
+		"ignore": [
+			// Until we fix vite-plugin-icons-spritesheet
+			"./apps/git-sell/public/icons/*",
+			// Until biome handles nested gitignore files
+			// Actually not tracked in git so doesn't matter
+			// "./packages/react-router-busy/dist/*",
+			"./apps/og-image/worker-configuration.d.ts"
+		]
+	},
+	"vcs": {
+		// Biome can't use nested .gitignore files yet https://github.com/biomejs/biome/issues/2312
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true,
+		"defaultBranch": "main"
+	}
+}

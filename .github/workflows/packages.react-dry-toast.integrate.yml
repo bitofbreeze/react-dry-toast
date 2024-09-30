@@ -1,0 +1,43 @@
+name: Integrate react-dry-toast
+
+on:
+  pull_request:
+
+# Don't run integrate checks multiple times at once, only most recent matters since validating all code
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  quality:
+    if: github.repository == 'bitofbreeze/react-dry-toast'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Set up Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          version: latest
+      - name: Run Biome
+        run: biome ci .
+  validate:
+    needs: [quality]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2.0.1
+        with:
+          bun-version: latest
+      - name: Install dependencies (`npm ci`)
+        # Don't run with --frozen-lockfile since different set of dependencies due to subset of packages causes lockfile changes that cause failure
+        run: bun install
+      - name: Test
+        run: bun test --filter react-dry-toast --coverage
+      # Build checks types so no need for separate typecheck step
+      - name: Build
+        run: bun --filter react-dry-toast build
+      - name: Check exports
+        run: bun --filter react-dry-toast check:exports

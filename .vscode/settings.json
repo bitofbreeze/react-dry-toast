@@ -1,0 +1,81 @@
+{
+	"npm.packageManager": "bun",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
+	"editor.tabSize": 2,
+	"editor.defaultFormatter": "biomejs.biome",
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
+	"tailwindCSS.classAttributes": ["class", "className", "tw"],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"cssVariables.languages": [
+		"astro",
+		"svelte",
+		"vue",
+		"vue-html",
+		"vue-postcss",
+		"scss",
+		"postcss",
+		"less",
+		"css",
+		"html",
+		"javascript",
+		"javascriptreact",
+		// "typescript",
+		// Adds it for normal objects
+		// "typescriptreact",
+		"source.css.styled",
+		"tailwindcss"
+	],
+	"cssVariables.lookupFiles": [
+		"**/*.css",
+		"**/*.scss",
+		"**/*.sass",
+		"**/*.less",
+		// Doesn't work with index.css
+		"node_modules/tailwindcss/theme.css"
+	],
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+	},
+	"cSpell.words": [
+		"arethetypeswrong",
+		"arktype",
+		"attw",
+		"biomejs",
+		"bunx",
+		"clipboardy",
+		"deepmerge",
+		"fastify",
+		"Gitsell",
+		"Hola",
+		"isbot",
+		"Konnichi",
+		"libsql",
+		"Markdoc",
+		"miniflare",
+		"Namecheap",
+		"partykit",
+		"partysocket",
+		"Renderable",
+		"revalidator",
+		"shiki",
+		"sindresorhus",
+		"sitekey",
+		"spritesheet",
+		"tailwindcss",
+		"totp",
+		"Turso",
+		"unlisting",
+		"unsuspended",
+		"unsuspending",
+		"Visx",
+		"workerd"
+	]
+}

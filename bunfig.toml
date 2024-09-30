@@ -1,0 +1,12 @@
+telemetry = false
+
+[install.lockfile]
+# Needed for patch-package https://github.com/oven-sh/bun/issues/2336#issuecomment-2028402422
+print = "yarn" # Whether to generate a non-Bun lockfile alongside bun.lockb
+
+[install]
+# Pin dependencies by default
+exact = true
+
+[test]
+preload = "./happydom.ts"

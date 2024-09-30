@@ -1,0 +1,44 @@
+name: Mirror react-dry-toast to Own Repo
+
+on:
+  push:
+  schedule:
+    # Only sync to destination once a week
+    - cron: '0 0 * * 0'
+  pull_request_target:
+  # TODO Call when a PR affecting this package is merged or release is made
+jobs:
+  mirror:
+    # Just don't run push in monorepo since we use cron there
+    # Still run on push in destination repo since it might be needed
+    # Note PR opened in dest repo pushes commit to source repo and now it's not run, doesn't seem to matter but if it does check actor
+    # And when PR merged in source, it still closes PR in destination but doesn't update destination repo
+    # Need to make sure only runs in mono and react-dry-toast, not other mirrors
+    # But also could just not mirror these actions to others
+    # "54: Nothing to do in the SoT repo except for push events."
+    # if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Copybara
+        uses: bitofbreeze/copybara-action@main
+        with:
+          access_token: ${{ secrets.COPY_GITHUB_REPO_TOKEN }}
+          ssh_key: ${{ secrets.COPY_SSH_KEY_TOAST }}
+          sot_repo: bitofbreeze/mono
+          destination_repo: bitofbreeze/react-dry-toast
+          # Explicitly include patches that are used since CI fails if it tries to patch a package that isn't a dependency
+          push_files: "glob(['**'], exclude = ['apps/**', 'packages/**', '.github/workflows/*.yml', 'patches/**']) + glob(['packages/react-dry-toast/**', '.github/workflows/packages.react-dry-toast.*.yml', 'patches/patch-package+*.patch'])"
+          # Only do SQUASH for initial mirror creation
+          push_mode: "SQUASH"
+          # Make sure to always remove init-history after first copybara push, else PRs created in destination will fail the workflow since --init-history is not compatible with CHANGE_REQUEST
+          # copybara_options: --init-history
+          # GitHub allows showing another README by default that is in .github https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes
+          # Also need to move license to show in GitHub main preview
+          # Nope doesn't work .github/LICENSE.md||packages/react-dry-toast/LICENSE.md
+          pr_move: |
+            .github/README.md||packages/react-dry-toast/README.md
