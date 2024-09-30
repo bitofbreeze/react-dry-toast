@@ -1,8 +1,14 @@
 # react-dry-toast
 
+[![Build Size](https://img.shields.io/bundlephobia/minzip/react-dry-toast?label=bundle%20size&style=flat&colorA=000000&colorB=000000)](https://bundlephobia.com/package/react-dry-toast)
+[![Version](https://img.shields.io/npm/v/react-dry-toast?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/react-dry-toast)
+[![Downloads](https://img.shields.io/npm/dt/react-dry-toast.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/react-dry-toast)
+
 A simple headless toast queueing and auto-dismissing solution for React 18+. The toast comes out plain; you add your own toppings.
 
 Other toast libraries do too much and end up with tons of bugs. react-dry-toast does what it needs to and leaves the styling up to you completely. As you can see in step 1, it doesn't even render a container, so you decide where it goes without any bloat.
+
+If you'd like to see an example, check it out live on https://gitsell.dev.
 
 ## Getting started
 
