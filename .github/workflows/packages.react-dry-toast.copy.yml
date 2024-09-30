@@ -16,7 +16,7 @@ jobs:
     # Need to make sure only runs in mono and react-dry-toast, not other mirrors
     # But also could just not mirror these actions to others
     # "54: Nothing to do in the SoT repo except for push events."
-    # if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
+    if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -34,7 +34,7 @@ jobs:
           # Explicitly include patches that are used since CI fails if it tries to patch a package that isn't a dependency
           push_files: "glob(['**'], exclude = ['apps/**', 'packages/**', '.github/workflows/*.yml', 'patches/**']) + glob(['packages/react-dry-toast/**', '.github/workflows/packages.react-dry-toast.*.yml', 'patches/patch-package+*.patch'])"
           # Only do SQUASH for initial mirror creation
-          push_mode: "SQUASH"
+          push_mode: "ITERATIVE"
           # Make sure to always remove init-history after first copybara push, else PRs created in destination will fail the workflow since --init-history is not compatible with CHANGE_REQUEST
           # copybara_options: --init-history
           # GitHub allows showing another README by default that is in .github https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes
