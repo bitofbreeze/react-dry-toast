@@ -12,7 +12,8 @@
 	},
 	"tailwindCSS.classAttributes": ["class", "className", "tw"],
 	"files.associations": {
-		"*.css": "tailwindcss"
+		"*.css": "tailwindcss",
+		"*.md": "markdoc"
 	},
 	"cssVariables.languages": [
 		"astro",

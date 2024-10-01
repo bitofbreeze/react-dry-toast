@@ -25,3 +25,6 @@ build/
 
 # bunx wrangler pages functions build ./functions
 _worker.bundle
+
+# https://www.content-collections.dev/docs/quickstart/remix-vite
+.content-collections
