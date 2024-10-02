@@ -16,7 +16,7 @@ jobs:
     # Need to make sure only runs in mono and react-dry-toast, not other mirrors
     # But also could just not mirror these actions to others
     # "54: Nothing to do in the SoT repo except for push events."
-    if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
+    # if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
