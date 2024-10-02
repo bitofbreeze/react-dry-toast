@@ -12,8 +12,9 @@
 	},
 	"tailwindCSS.classAttributes": ["class", "className", "tw"],
 	"files.associations": {
-		"*.css": "tailwindcss",
-		"*.md": "markdoc"
+		"*.css": "tailwindcss"
+		// This disables features like markdown preview
+		// "*.md": "markdoc"
 	},
 	"cssVariables.languages": [
 		"astro",
