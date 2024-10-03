@@ -28,3 +28,6 @@ _worker.bundle
 
 # https://www.content-collections.dev/docs/quickstart/remix-vite
 .content-collections
+
+# https://github.com/filipsobol/sonda/tree/main/packages/sonda
+sonda-report.html
