@@ -16,7 +16,9 @@
 		"Gruntfuggly.todo-tree",
 		"formulahendry.auto-rename-tag",
 		"GitHub.vscode-github-actions",
-		"stripe.markdoc-language-support"
+		"stripe.markdoc-language-support",
+		// physician-fyi
+		"mechatroner.rainbow-csv"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
