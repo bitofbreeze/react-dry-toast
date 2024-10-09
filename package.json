@@ -3,7 +3,7 @@
 	"private": true,
 	"devDependencies": {
 		"@biomejs/biome": "1.9.0",
-		"@happy-dom/global-registrator": "15.7.3",
+		"@happy-dom/global-registrator": "15.7.4",
 		"@types/bun": "1.1.9",
 		"husky": "9.1.6",
 		"lint-staged": "15.2.10",
