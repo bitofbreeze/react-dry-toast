@@ -25,6 +25,19 @@
 			"nursery": {
 				// https://github.com/biomejs/biome/issues/1274
 				// "useSortedClasses":"error"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": {
+					"options": {
+						"hooks": [
+							{
+								"name": "useIsomorphicLayoutEffect",
+								"closureIndex": 0,
+								"dependenciesIndex": 1
+							}
+						]
+					}
+				}
 			}
 		}
 	},

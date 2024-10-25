@@ -53,7 +53,7 @@ import { toast } from "react-dry-toast";
 
 ...
 
-toast((props) => <li {...props}><button onClick={props.onClose}>Close</button></li>, 0);
+toast(({onClose, ...props}) => <li {...props}><button onClick={onClose}>Close</button></li>, 0);
 ```
 
 3. If making toast in an effect, make sure to clean up for strict mode:
