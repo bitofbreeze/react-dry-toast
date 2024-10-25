@@ -53,7 +53,8 @@ import { toast } from "react-dry-toast";
 
 ...
 
-toast(({onClose, ...props}) => <li {...props}><button onClick={onClose}>Close</button></li>, 0);
+// Note you still need to pass `props.onClose` to the enclosing element which is why it's not destructured
+toast((props) => <li {...props}><button onClick={props.onClose}>Close</button></li>, 0);
 ```
 
 3. If making toast in an effect, make sure to clean up for strict mode:
