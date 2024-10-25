@@ -2,9 +2,10 @@ name: Mirror react-dry-toast to Own Repo
 
 on:
   push:
-  schedule:
+  # schedule:
     # Only sync to destination once a week
-    - cron: '0 0 * * 0'
+    # Doesn't work because action is configured to only do copy on push
+    # - cron: '0 0 * * 0'
   pull_request_target:
   # TODO Call when a PR affecting this package is merged or release is made
 jobs:
@@ -15,8 +16,9 @@ jobs:
     # And when PR merged in source, it still closes PR in destination but doesn't update destination repo
     # Need to make sure only runs in mono and react-dry-toast, not other mirrors
     # But also could just not mirror these actions to others
+    # (github.event_name != 'push' || github.repository != 'bitofbreeze/mono')
     # "54: Nothing to do in the SoT repo except for push events."
-    if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name	!= 'push' || github.repository != 'bitofbreeze/mono') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
+    if: (github.repository == 'bitofbreeze/mono' || github.repository == 'bitofbreeze/react-dry-toast') && (github.event_name != 'pull_request_target' || github.repository != 'bitofbreeze/mono')
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
