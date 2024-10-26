@@ -25,7 +25,7 @@
 	"//lint-staged": "Able to not pass files as args https://github.com/lint-staged/lint-staged/issues/174#issuecomment-437468837",
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
-			"biome check --write --no-errors-on-unmatched"
+			"biome check --write --no-errors-on-unmatched --diagnostic-level=error"
 		],
 		"**/*.ts?(x)": ["bun --filter '*' check && :"]
 	}

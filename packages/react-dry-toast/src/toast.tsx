@@ -83,7 +83,7 @@ const Toast = ({ component, id, timeout = 7000 }: ToastData) => {
 	return <Component onClose={remove} {...handlers} />;
 };
 
-const useAutoClose = (onClose: () => void, timeout?: number) => {
+export const useAutoClose = (onClose: () => void, timeout?: number) => {
 	const [autoClose, setAutoClose] = useState<{
 		timer: NodeJS.Timer | null;
 	}>();
