@@ -48,7 +48,9 @@
 			// Until biome handles nested gitignore files
 			// Actually not tracked in git so doesn't matter
 			// "./packages/react-router-busy/dist/*",
-			"./apps/og-image/worker-configuration.d.ts"
+			"./apps/og-image/worker-configuration.d.ts",
+			// syncpack handles formatting package.json files, otherwise they conflict
+			"**/package.json"
 		]
 	},
 	"vcs": {

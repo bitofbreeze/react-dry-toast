@@ -1,32 +1,48 @@
 {
 	"name": "mono",
 	"private": true,
+	"version": "0.0.0",
+	"//lint-staged": "Able to not pass files as args https://github.com/lint-staged/lint-staged/issues/174#issuecomment-437468837",
+	"//packageManager": "Don't upgrade to 1.1.34 https://github.com/oven-sh/bun/issues/14974",
 	"devDependencies": {
 		"@biomejs/biome": "1.9.0",
 		"@happy-dom/global-registrator": "15.7.4",
-		"@types/bun": "1.1.9",
+		"@types/bun": "1.1.13",
 		"husky": "9.1.6",
 		"lint-staged": "15.2.10",
-		"patch-package": "8.0.0"
+		"patch-package": "8.0.0",
+		"syncpack": "13.0.0"
 	},
 	"engines": {
 		"node": ">=20.6.0"
 	},
-	"scripts": {
-		"//lint": "No monorepo support yet so just use from root https://github.com/biomejs/biome/issues/2228",
-		"lint": "bunx @biomejs/biome check --vcs-use-ignore-file true --write .",
-		"//postinstall": "--error-on-fail is on by default in CI but some patched packages aren't present in mirrored repos causing failure",
-		"postinstall": "patch-package",
-		"prepare": "husky"
-	},
-	"trustedDependencies": ["@biomejs/biome", "esbuild", "ngrok", "workerd"],
-	"workspaces": ["apps/*", "packages/*"],
-	"packageManager": "bun@1.1.27",
-	"//lint-staged": "Able to not pass files as args https://github.com/lint-staged/lint-staged/issues/174#issuecomment-437468837",
 	"lint-staged": {
 		"*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,css}": [
 			"biome check --write --no-errors-on-unmatched --diagnostic-level=error"
 		],
-		"**/*.ts?(x)": ["bun --filter '*' check && :"]
-	}
+		"**/*.ts?(x)": [
+			"bun --filter '*' check && :"
+		],
+		"**/package.json": [
+			"syncpack lint"
+		]
+	},
+	"packageManager": "bun@1.1.33",
+	"scripts": {
+		"//lint": "No monorepo support yet, so just use from root https://github.com/biomejs/biome/issues/2228",
+		"//postinstall": "--error-on-fail is on by default in CI but some patched packages aren't present in mirrored repos causing failure",
+		"lint": "bunx @biomejs/biome check --vcs-use-ignore-file true --write .",
+		"postinstall": "patch-package",
+		"prepare": "husky"
+	},
+	"trustedDependencies": [
+		"@biomejs/biome",
+		"esbuild",
+		"ngrok",
+		"workerd"
+	],
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	]
 }

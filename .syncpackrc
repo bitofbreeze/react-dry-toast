@@ -1,0 +1,40 @@
+{
+	"$schema": "./node_modules/syncpack/dist/schema.json",
+	"sortFirst": ["name", "private", "version"],
+	"indent": "\t",
+	"versionGroups": [
+		{
+			"label": "Use workspace protocol when developing local packages",
+			"dependencies": ["$LOCAL"],
+			"dependencyTypes": ["dev", "prod"],
+			"pinVersion": "workspace:*"
+		},
+		{
+			"label": "@types packages are confined to devDependencies",
+			"dependencies": ["@types/**"],
+			"dependencyTypes": ["!dev"],
+			"isBanned": true
+		},
+		{
+			"label": "Ignore packages' peer dependencies with HighestSemverMismatch",
+			"dependencyTypes": ["peer"],
+			"specifierTypes": ["range"]
+		}
+	],
+	"semverGroups": [
+		{
+			"label": "Use caret range for public packages' peer dependencies",
+			"packages": ["react-router-busy", "react-dry-toast"],
+			"dependencyTypes": ["peer"],
+			"dependencies": ["**"],
+			"range": "^"
+		},
+		{
+			"label": "Use exact version numbers",
+			"packages": ["**"],
+			"dependencyTypes": ["prod", "dev"],
+			"dependencies": ["**"],
+			"range": ""
+		}
+	]
+}
