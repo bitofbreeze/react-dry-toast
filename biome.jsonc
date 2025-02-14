@@ -44,7 +44,7 @@
 	"formatter": {
 		"ignore": [
 			// Until we fix vite-plugin-icons-spritesheet
-			"./apps/git-sell/public/icons/*",
+			"./apps/gitsell/public/icons/*",
 			// Until biome handles nested gitignore files
 			// Actually not tracked in git so doesn't matter
 			// "./packages/react-router-busy/dist/*",
