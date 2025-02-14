@@ -35,7 +35,7 @@
 	"license": "MIT",
 	"main": "build/toast.js",
 	"peerDependencies": {
-		"react": "^18.0.0"
+		"react": "^18.0.0 || ^19.0.0"
 	},
 	"release": {
 		"branches": [
