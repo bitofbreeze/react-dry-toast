@@ -64,6 +64,7 @@
 		"miniflare",
 		"Namecheap",
 		"nppes",
+		"papaparse",
 		"partykit",
 		"partysocket",
 		"Renderable",
@@ -78,9 +79,11 @@
 		"Turso",
 		"typegen",
 		"unlisting",
+		"unrecoverably",
 		"unsuspended",
 		"unsuspending",
 		"Visx",
 		"workerd"
-	]
+	],
+	"rainbow_csv.highlight_rows": true
 }
