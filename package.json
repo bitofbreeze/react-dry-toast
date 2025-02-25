@@ -21,13 +21,13 @@
 			"biome check --write --no-errors-on-unmatched --diagnostic-level=error"
 		],
 		"**/*.ts?(x)": [
-			"bun --filter '*' check && :"
+			"bash -c \"bun --filter '*' check && :\""
 		],
 		"**/package.json": [
 			"syncpack lint"
 		]
 	},
-	"packageManager": "bun@1.1.33",
+	"packageManager": "bun@1.2.3",
 	"scripts": {
 		"//lint": "No monorepo support yet, so just use from root https://github.com/biomejs/biome/issues/2228",
 		"//postinstall": "--error-on-fail is on by default in CI but some patched packages aren't present in mirrored repos causing failure",

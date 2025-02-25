@@ -19,12 +19,6 @@
 			"label": "Ignore packages' peer dependencies with HighestSemverMismatch",
 			"dependencyTypes": ["peer"],
 			"specifierTypes": ["range"]
-		},
-		{
-			"label": "Disable HighestSemverMismatch for arktype",
-			"dependencies": ["arktype"],
-			"dependencyTypes": ["prod"],
-			"isIgnored": true
 		}
 	],
 	"semverGroups": [
