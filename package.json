@@ -27,7 +27,7 @@
 			"syncpack lint"
 		]
 	},
-	"packageManager": "bun@1.2.3",
+	"packageManager": "bun@1.2.4",
 	"scripts": {
 		"//lint": "No monorepo support yet, so just use from root https://github.com/biomejs/biome/issues/2228",
 		"//postinstall": "--error-on-fail is on by default in CI but some patched packages aren't present in mirrored repos causing failure",
