@@ -24,5 +24,8 @@
 
 		// For octokit types https://www.npmjs.com/package/@octokit/webhooks-types
 		"strictNullChecks": true
+
+		// "composite": true,
+		// "verbatimModuleSyntax": true
 	}
 }

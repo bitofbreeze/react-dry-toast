@@ -5,7 +5,11 @@
 	},
 	"linter": {
 		"enabled": true,
-		"ignore": ["./apps/og-image/worker-configuration.d.ts"],
+		"ignore": [
+			"./apps/og-image/worker-configuration.d.ts",
+			"./apps/physician-fyi/worker-configuration.d.ts",
+			"./apps/physician-fyi/app/app.css"
+		],
 		"rules": {
 			"recommended": true,
 			"a11y": {
@@ -50,7 +54,8 @@
 			// "./packages/react-router-busy/dist/*",
 			"./apps/og-image/worker-configuration.d.ts",
 			// syncpack handles formatting package.json files, otherwise they conflict
-			"**/package.json"
+			"**/package.json",
+			"./apps/physician-fyi/app/app.css"
 		]
 	},
 	"vcs": {
