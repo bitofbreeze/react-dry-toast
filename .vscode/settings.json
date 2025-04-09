@@ -1,5 +1,5 @@
 {
-	"npm.packageManager": "bun",
+	"npm.packageManager": "npm",
 	"editor.formatOnSave": true,
 	"editor.codeActionsOnSave": {
 		"quickfix.biome": "explicit",
@@ -51,11 +51,12 @@
 		"arktype",
 		"attw",
 		"biomejs",
-		"bunx",
 		"clipboardy",
 		"deepmerge",
+		"embedder",
 		"fastify",
 		"Gitsell",
+		"hnsw",
 		"Hola",
 		"isbot",
 		"Konnichi",
@@ -83,7 +84,9 @@
 		"unsuspended",
 		"unsuspending",
 		"Visx",
-		"workerd"
+		"workerd",
+		"workerpool"
 	],
-	"rainbow_csv.highlight_rows": true
+	"rainbow_csv.highlight_rows": true,
+	"typescript.tsdk": "node_modules/typescript/lib"
 }

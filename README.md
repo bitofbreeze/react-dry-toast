@@ -1,9 +1,10 @@
 # monorepo
 
-Bun monorepos are a bit undeveloped and undocumented. Some common commands you'll need are:
-* bun i typescript --cwd=apps/app2
-* bun --filter gitsell dev
-* bun --cwd=apps/gitsell ngrok http 5173 --domain=pleased-manually-lab.ngrok-free.app
+* `nvm use`
+  * You can run `nvm alias default 23` to change your default and avoid having to run this for every new terminal.
+* `npm i --legacy-peer-deps`
+* `npm run dev --workspace=gitsell`
+* `npm install react -w gitsell`
 
 ## Workflow
 

@@ -7,7 +7,7 @@
 			"label": "Use workspace protocol when developing local packages",
 			"dependencies": ["$LOCAL"],
 			"dependencyTypes": ["dev", "prod"],
-			"pinVersion": "workspace:*"
+			"pinVersion": "0.0.0"
 		},
 		{
 			"label": "@types packages are confined to devDependencies",

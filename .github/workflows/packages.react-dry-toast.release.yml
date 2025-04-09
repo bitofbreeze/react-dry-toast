@@ -23,41 +23,42 @@ jobs:
           version: latest
       - name: Run Biome
         run: biome ci .
-  release:
-    needs: [quality]
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # to be able to publish a GitHub release
-      issues: write # to be able to comment on released issues
-      pull-requests: write # to be able to comment on released pull requests
-      id-token: write # to enable use of OIDC for npm provenance
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2.0.1
-        with:
-          bun-version: latest
-      - name: Install dependencies (`npm ci`)
-        # Different set of dependencies due to subset of packages causes lockfile changes that cause failure so no --frozen-lockfile
-        # https://github.com/oven-sh/bun/issues/5792#issuecomment-2325444077
-        run: bun install
-      - name: Test
-        run: bun test --filter react-dry-toast --coverage
-      # Build checks types so no need for separate typecheck step
-      - name: Build
-        run: bun --filter react-dry-toast build
-      - name: Check exports
-        run: bun --filter react-dry-toast check:exports
-      # Note we have to toggle Workflow permissions > Allow GitHub Actions to create and approve pull requests in https://github.com/bitofbreeze/mono/settings/actions
-      # Even with permissions above https://github.com/orgs/community/discussions/27689#discussioncomment-5707424
-      # Could avoid this with personal access token https://microsoft.github.io/beachball/concepts/ci-integration.html#authentication
-      - name: Release
-        uses: cycjimmy/semantic-release-action@v4
-        with:
-          working_directory: ./packages/react-dry-toast
-        env:
-          GITHUB_TOKEN: ${{ secrets.COPY_GITHUB_REPO_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  # TODO Switch to npm
+  # release:
+  #   needs: [quality]
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: write # to be able to publish a GitHub release
+  #     issues: write # to be able to comment on released issues
+  #     pull-requests: write # to be able to comment on released pull requests
+  #     id-token: write # to enable use of OIDC for npm provenance
+  #   steps:
+  #     - name: Check out code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Set up Bun
+  #       uses: oven-sh/setup-bun@v2.0.1
+  #       with:
+  #         bun-version: latest
+  #     - name: Install dependencies (`npm ci`)
+  #       # Different set of dependencies due to subset of packages causes lockfile changes that cause failure so no --frozen-lockfile
+  #       # https://github.com/oven-sh/bun/issues/5792#issuecomment-2325444077
+  #       run: bun install
+  #     - name: Test
+  #       run: bun test --filter react-dry-toast --coverage
+  #     # Build checks types so no need for separate typecheck step
+  #     - name: Build
+  #       run: bun --filter react-dry-toast build
+  #     - name: Check exports
+  #       run: bun --filter react-dry-toast check:exports
+  #     # Note we have to toggle Workflow permissions > Allow GitHub Actions to create and approve pull requests in https://github.com/bitofbreeze/mono/settings/actions
+  #     # Even with permissions above https://github.com/orgs/community/discussions/27689#discussioncomment-5707424
+  #     # Could avoid this with personal access token https://microsoft.github.io/beachball/concepts/ci-integration.html#authentication
+  #     - name: Release
+  #       uses: cycjimmy/semantic-release-action@v4
+  #       with:
+  #         working_directory: ./packages/react-dry-toast
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.COPY_GITHUB_REPO_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

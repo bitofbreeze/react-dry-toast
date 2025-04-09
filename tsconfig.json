@@ -2,19 +2,22 @@
 	// TODO https://bun.sh/docs/typescript#suggested-compileroptions
 	"compilerOptions": {
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
-		// Types aren't inherited so need to redeclare in each package that uses bun types
-		"types": ["bun-types"],
+		// Types aren't inherited so need to redeclare in each package that uses node types
+		"types": ["node"],
 		"isolatedModules": true,
 		"esModuleInterop": true,
 		"jsx": "react-jsx",
 		"module": "ESNext",
-		"moduleResolution": "Bundler",
+		"moduleResolution": "bundler",
+		// Needed in node 23 because imported local modules need to be postfixed with file extension
+		"allowImportingTsExtensions": true,
 		"resolveJsonModule": true,
 		"target": "ES2022",
 		"strict": true,
 		"allowJs": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true,
+		"erasableSyntaxOnly": true,
 
 		// Vite takes care of building everything, not tsc.
 		"noEmit": true,

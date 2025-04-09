@@ -85,7 +85,7 @@ const Toast = ({ component, id, timeout = 7000 }: ToastData) => {
 
 export const useAutoClose = (onClose: () => void, timeout?: number) => {
 	const [autoClose, setAutoClose] = useState<{
-		timer: NodeJS.Timer | null;
+		timer: NodeJS.Timeout | null;
 	}>();
 
 	// Auto-start timeout on mount

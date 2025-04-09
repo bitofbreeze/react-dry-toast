@@ -18,7 +18,8 @@
 		"GitHub.vscode-github-actions",
 		"stripe.markdoc-language-support",
 		// physician-fyi
-		"mechatroner.rainbow-csv"
+		"mechatroner.rainbow-csv",
+		"thebearingedge.vscode-sql-lit"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": []
