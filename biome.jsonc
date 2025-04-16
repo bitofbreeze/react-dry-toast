@@ -14,7 +14,9 @@
 			"recommended": true,
 			"a11y": {
 				"useButtonType": "off",
-				"noInteractiveElementToNoninteractiveRole": "warn"
+				"noInteractiveElementToNoninteractiveRole": "warn",
+				// broken
+				"noLabelWithoutControl": "off"
 			},
 			"style": {
 				"noNonNullAssertion": "warn",
