@@ -27,11 +27,11 @@
 	},
 	"packageManager": "npm@11.2.0",
 	"scripts": {
+		"////postinstall": "patch-package",
 		"//lint": "No monorepo support yet, so just use from root https://github.com/biomejs/biome/issues/2228",
 		"//postinstall": "--error-on-fail is on by default in CI but some patched packages aren't present in mirrored repos causing failure",
 		"check": "npm run check --workspaces --if-present",
 		"lint": "npx @biomejs/biome check --vcs-use-ignore-file true --write .",
-		"postinstall": "patch-package",
 		"prepare": "husky"
 	},
 	"trustedDependencies": [
