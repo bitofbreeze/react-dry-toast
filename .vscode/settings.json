@@ -69,6 +69,8 @@
 		"papaparse",
 		"partykit",
 		"partysocket",
+		"plpy",
+		"plpython",
 		"precomputation",
 		"Renderable",
 		"revalidator",
