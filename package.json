@@ -22,7 +22,7 @@
 			"bash -c \"npm run check && :\""
 		],
 		"**/package.json": [
-			"syncpack lint"
+			"echo \"`syncpack lint` disabled until can support tarball version for xlsx\""
 		]
 	},
 	"packageManager": "npm@11.2.0",

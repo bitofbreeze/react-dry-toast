@@ -4,6 +4,11 @@
 	"indent": "\t",
 	"versionGroups": [
 		{
+			"label": "Ignore for version urls",
+			"dependencies": ["xlsx"],
+			"isIgnored": true
+		},
+		{
 			"label": "Use workspace protocol when developing local packages",
 			"dependencies": ["$LOCAL"],
 			"dependencyTypes": ["dev", "prod"],
