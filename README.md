@@ -5,6 +5,7 @@
 * `npm i --legacy-peer-deps`
 * `npm run dev --workspace=gitsell`
 * `npm install react -w gitsell`
+* Keep computer on for a long-running script with `caffeinate -s node script.ts`
 
 ## Workflow
 
