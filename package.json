@@ -9,7 +9,8 @@
 		"husky": "9.1.6",
 		"lint-staged": "15.2.10",
 		"patch-package": "8.0.0",
-		"syncpack": "13.0.0"
+		"syncpack": "13.0.0",
+		"vitest": "3.1.2"
 	},
 	"engines": {
 		"node": ">=23.9.0"
